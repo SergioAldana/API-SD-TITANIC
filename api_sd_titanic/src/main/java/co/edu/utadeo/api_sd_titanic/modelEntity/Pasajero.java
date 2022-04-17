@@ -1,74 +1,176 @@
 package co.edu.utadeo.api_sd_titanic.modelEntity;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import java.time.LocalDate;
-import java.time.Period;
-import java.time.format.DateTimeFormatter;
+import javax.persistence.*;
+import java.io.Serializable;
 
 @Entity(name = "pasajero")
-public class Pasajero {
+public class Pasajero implements Serializable {
+    private static final long serialVersionUID = 1L;
 
     @Id
-    private long cedula;
-    @Column
-    private String nombre;
-    @Column
-    private String apellido;
-    @Column
-    private String fechaNac;
-    @Column
-    private Period edad;
-
-    public long getCedula() {
-        return cedula;
-    }
-
-    public void setCedula(long cedula) {
-        this.cedula = cedula;
-    }
-
-    public String getNombre() {
-        return nombre;
-    }
-
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
-    }
-
-    public String getApellido() {
-        return apellido;
-    }
-
-    public void setApellido(String apellido) {
-        this.apellido = apellido;
-    }
-
-    public String getFechaNac() {
-        return fechaNac;
-    }
-
-    public void setFechaNac(String fechaNac) {
-        this.fechaNac = fechaNac;
-    }
-
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private long id;
     /**
-     * Nose porque tanto set como get no me estan funcionando como deberia
+     * 1 al 3
      */
-    public Period getEdad() {
-        /*
-        System.out.printf("Tu edad es: %s años, %s meses y %s días",
-        edad.getYears(), edad.getMonths(), edad.getDays());
-        */
-        return edad;
+    @Column
+    private long pclass;
+    @Column
+    private long survived;
+    @Column
+    private String name;
+    /**
+     * female o male
+     */
+    @Column
+    private String sex;
+    @Column
+    private double age;
+    /**
+     * 1 al 8
+     */
+    @Column
+    private long sibsp;
+    /**
+     * 1 al 9
+     */
+    @Column
+    private long parch;
+    @Column
+    private long ticket;
+    @Column
+    private double fare;
+    @Column
+    private String cabin;
+    /**
+     * C, Q, S o Nullo
+     */
+    @Column
+    private String embarked;
+    @Column
+    private String boat;
+    @Column
+    private long body;
+    @Column
+    private String home_dest;
+
+    public long getId() {
+        return id;
     }
 
-    public void setEdad() {
-        DateTimeFormatter formato = DateTimeFormatter.ofPattern("dd/MM/yyyy");
-        LocalDate fechaNac = LocalDate.parse(getFechaNac(), formato);
-        LocalDate fechaAct = LocalDate.now();
+    public void setId(long id) {
+        this.id = id;
+    }
 
-        this.edad = Period.between(fechaNac, fechaAct);
+    public long getPclass() {
+        return pclass;
+    }
+
+    public void setPclass(long pclass) {
+        this.pclass = pclass;
+    }
+
+    public long getSurvived() {
+        return survived;
+    }
+
+    public void setSurvived(long survived) {
+        this.survived = survived;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getSex() {
+        return sex;
+    }
+
+    public void setSex(String sex) {
+        this.sex = sex;
+    }
+
+    public double getAge() {
+        return age;
+    }
+
+    public void setAge(double age) {
+        this.age = age;
+    }
+
+    public long getSibsp() {
+        return sibsp;
+    }
+
+    public void setSibsp(long sibsp) {
+        this.sibsp = sibsp;
+    }
+
+    public long getParch() {
+        return parch;
+    }
+
+    public void setParch(long parch) {
+        this.parch = parch;
+    }
+
+    public long getTicket() {
+        return ticket;
+    }
+
+    public void setTicket(long ticket) {
+        this.ticket = ticket;
+    }
+
+    public double getFare() {
+        return fare;
+    }
+
+    public void setFare(double fare) {
+        this.fare = fare;
+    }
+
+    public String getCabin() {
+        return cabin;
+    }
+
+    public void setCabin(String cabin) {
+        this.cabin = cabin;
+    }
+
+    public String getEmbarked() {
+        return embarked;
+    }
+
+    public void setEmbarked(String embarked) {
+        this.embarked = embarked;
+    }
+
+    public String getBoat() {
+        return boat;
+    }
+
+    public void setBoat(String boat) {
+        this.boat = boat;
+    }
+
+    public long getBody() {
+        return body;
+    }
+
+    public void setBody(long body) {
+        this.body = body;
+    }
+
+    public String getHome_dest() {
+        return home_dest;
+    }
+
+    public void setHome_dest(String home_dest) {
+        this.home_dest = home_dest;
     }
 }

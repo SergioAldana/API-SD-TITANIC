@@ -8,10 +8,5 @@ public interface IPasajeroService {
 
     List<Pasajero> findAll();
 
-    Usuario findById(Long id);
-
-    Usuario save(Usuario usuario);
-
-    void remove(Long id);
-
+    Pasajero findById(Long id);
 }
