@@ -7,6 +7,34 @@ import java.io.Serializable;
 public class Pasajero implements Serializable {
     private static final long serialVersionUID = 1L;
 
+    /**
+     * Seran necesarios estos constructores?
+     * Permitira entradas con valores nulos?
+     */
+    public Pasajero() {
+
+    }
+
+    public Pasajero(long id, long pclass, boolean survived, String name, String sex, double age,
+                    long sibsp, long parch, long ticket, double fare, String cabin, String embarked,
+                    String boat, long body, String home_dest) {
+        this.id = id;
+        this.pclass = pclass;
+        this.survived = survived;
+        this.name = name;
+        this.sex = sex;
+        this.age = age;
+        this.sibsp = sibsp;
+        this.parch = parch;
+        this.ticket = ticket;
+        this.fare = fare;
+        this.cabin = cabin;
+        this.embarked = embarked;
+        this.boat = boat;
+        this.body = body;
+        this.home_dest = home_dest;
+    }
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
@@ -15,8 +43,11 @@ public class Pasajero implements Serializable {
      */
     @Column
     private long pclass;
+    /**
+     * 1 o 0
+     */
     @Column
-    private long survived;
+    private boolean survived;
     @Column
     private String name;
     /**
@@ -43,7 +74,7 @@ public class Pasajero implements Serializable {
     @Column
     private String cabin;
     /**
-     * C, Q, S o Nullo
+     * C, Q, S o Nulo
      */
     @Column
     private String embarked;
@@ -51,7 +82,10 @@ public class Pasajero implements Serializable {
     private String boat;
     @Column
     private long body;
-    @Column
+    /**
+     * Como aparecerá el nombre en la BD?
+     */
+    @Column(name = "home.dest")
     private String home_dest;
 
     public long getId() {
@@ -70,11 +104,11 @@ public class Pasajero implements Serializable {
         this.pclass = pclass;
     }
 
-    public long getSurvived() {
+    public boolean getSurvived() {
         return survived;
     }
 
-    public void setSurvived(long survived) {
+    public void setSurvived(boolean survived) {
         this.survived = survived;
     }
 
@@ -172,5 +206,29 @@ public class Pasajero implements Serializable {
 
     public void setHome_dest(String home_dest) {
         this.home_dest = home_dest;
+    }
+
+    /**
+     * Este toString sera necesario?
+     */
+    @Override
+    public String toString() {
+        return "Pasajero{" +
+                "id=" + id +
+                ", pclass=" + pclass +
+                ", survived=" + survived +
+                ", name='" + name + '\'' +
+                ", sex='" + sex + '\'' +
+                ", age=" + age +
+                ", sibsp=" + sibsp +
+                ", parch=" + parch +
+                ", ticket=" + ticket +
+                ", fare=" + fare +
+                ", cabin='" + cabin + '\'' +
+                ", embarked='" + embarked + '\'' +
+                ", boat='" + boat + '\'' +
+                ", body=" + body +
+                ", home_dest='" + home_dest + '\'' +
+                '}';
     }
 }
