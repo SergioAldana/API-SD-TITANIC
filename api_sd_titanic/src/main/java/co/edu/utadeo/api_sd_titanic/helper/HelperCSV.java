@@ -16,7 +16,7 @@ import java.util.List;
 public class HelperCSV {
     public static String TYPE = "text/csv";
     static String[] HEADERs = {"Id", "Pclass", "Survived", "Name", "Sex", "Age",
-            "Sibsp", "Parch", "Ticket", "Fare", "Cabin", "Embarked", "Boat", "Body", "Home.dest"};
+            "Sibsp", "Parch", "Ticket", "Fare", "Cabin", "Embarked", "Boat", "Body", "Home_dest"};
 
     public static boolean hasCSVFormat(MultipartFile file) {
 
@@ -27,7 +27,7 @@ public class HelperCSV {
     }
 
     public static List<Pasajero> csvToPassengers(InputStream is) {
-        try (BufferedReader fileReader = new BufferedReader(new InputStreamReader(is, "UTF-8"));
+        try (BufferedReader fileReader = new BufferedReader(new InputStreamReader(is));
              CSVParser csvParser = new CSVParser(fileReader,
                      CSVFormat.DEFAULT.withFirstRecordAsHeader().withIgnoreHeaderCase().withTrim())) {
 
@@ -39,7 +39,7 @@ public class HelperCSV {
                 Pasajero pasajero = new Pasajero(
                         Long.parseLong(csvRecord.get("Id")),
                         Long.parseLong(csvRecord.get("Pclass")),
-                        Boolean.parseBoolean(csvRecord.get("Survided")),
+                        Long.parseLong(csvRecord.get("Survived")),
                         csvRecord.get("Name"),
                         csvRecord.get("Sex"),
                         Double.parseDouble(csvRecord.get("Age")),
@@ -50,8 +50,8 @@ public class HelperCSV {
                         csvRecord.get("Cabin"),
                         csvRecord.get("Embarked"),
                         csvRecord.get("Boat"),
-                        Long.parseLong(csvRecord.get("Body")),
-                        csvRecord.get("Home.dest")
+                        csvRecord.get("Body"),
+                        csvRecord.get("Home_dest")
                 );
                 pasajeros.add(pasajero);
 

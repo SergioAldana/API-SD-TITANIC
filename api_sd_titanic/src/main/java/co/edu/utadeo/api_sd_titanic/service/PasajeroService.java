@@ -36,7 +36,6 @@ public class PasajeroService implements IPasajeroService {
     }
 
     /**
-     * Creo que aqui sera en donde deba sobreescribir los metodos
-     * y agregarle funcionalidad para implementarlos mas adelante
+     * Creo que aqui es en donde debo empezar a agregar la funcionalidad adicional
      */
 }

@@ -6,35 +6,6 @@ import java.io.Serializable;
 @Entity(name = "pasajero")
 public class Pasajero implements Serializable {
     private static final long serialVersionUID = 1L;
-
-    /**
-     * Seran necesarios estos constructores?
-     * Permitira entradas con valores nulos?
-     */
-    public Pasajero() {
-
-    }
-
-    public Pasajero(long id, long pclass, boolean survived, String name, String sex, double age,
-                    long sibsp, long parch, long ticket, double fare, String cabin, String embarked,
-                    String boat, long body, String home_dest) {
-        this.id = id;
-        this.pclass = pclass;
-        this.survived = survived;
-        this.name = name;
-        this.sex = sex;
-        this.age = age;
-        this.sibsp = sibsp;
-        this.parch = parch;
-        this.ticket = ticket;
-        this.fare = fare;
-        this.cabin = cabin;
-        this.embarked = embarked;
-        this.boat = boat;
-        this.body = body;
-        this.home_dest = home_dest;
-    }
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
@@ -47,7 +18,7 @@ public class Pasajero implements Serializable {
      * 1 o 0
      */
     @Column
-    private boolean survived;
+    private long survived;
     @Column
     private String name;
     /**
@@ -81,12 +52,37 @@ public class Pasajero implements Serializable {
     @Column
     private String boat;
     @Column
-    private long body;
-    /**
-     * Como aparecerá el nombre en la BD?
-     */
-    @Column(name = "home.dest")
+    private String body;
+    @Column
     private String home_dest;
+
+    /**
+     * Seran necesarios estos constructores?
+     * Permitira entradas con valores nulos?
+     */
+    public Pasajero() {
+
+    }
+
+    public Pasajero(long id, long pclass, long survived, String name, String sex, double age,
+                    long sibsp, long parch, long ticket, double fare, String cabin, String embarked,
+                    String boat, String body, String home_dest) {
+        this.id = id;
+        this.pclass = pclass;
+        this.survived = survived;
+        this.name = name;
+        this.sex = sex;
+        this.age = age;
+        this.sibsp = sibsp;
+        this.parch = parch;
+        this.ticket = ticket;
+        this.fare = fare;
+        this.cabin = cabin;
+        this.embarked = embarked;
+        this.boat = boat;
+        this.body = body;
+        this.home_dest = home_dest;
+    }
 
     public long getId() {
         return id;
@@ -104,11 +100,11 @@ public class Pasajero implements Serializable {
         this.pclass = pclass;
     }
 
-    public boolean getSurvived() {
+    public long getSurvived() {
         return survived;
     }
 
-    public void setSurvived(boolean survived) {
+    public void setSurvived(long survived) {
         this.survived = survived;
     }
 
@@ -192,11 +188,11 @@ public class Pasajero implements Serializable {
         this.boat = boat;
     }
 
-    public long getBody() {
+    public String getBody() {
         return body;
     }
 
-    public void setBody(long body) {
+    public void setBody(String body) {
         this.body = body;
     }
 
