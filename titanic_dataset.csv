@@ -1,4 +1,4 @@
-Name,Pclass,Sex,Age,Siblings/Spouses Aboard,Parents/Children Aboard,Fare,Survived
+Name,Pclass,Sex,Age,Siblings_SpousesAboard,Parents_ChildrenAboard,Fare,Survived
 "Mr. Owen Harris Braund",3,"male",22,1,0,7.25,0
 "Mrs. John Bradley (Florence Briggs Thayer) Cumings",1,"female",38,1,0,71.2833,1
 "Miss. Laina Heikkinen",3,"female",26,0,0,7.925,1
