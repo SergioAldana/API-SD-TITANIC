@@ -9,79 +9,58 @@ public class Pasajero implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
+    @Column
+    private String name;
     /**
      * 1 al 3
      */
     @Column
     private long pclass;
     /**
-     * 1 o 0
-     */
-    @Column
-    private long survived;
-    @Column
-    private String name;
-    /**
      * female o male
      */
     @Column
     private String sex;
     @Column
-    private double age;
+    private Double age;
     /**
      * 1 al 8
      */
     @Column
-    private long sibsp;
+    private long siblings_spousesAboard;
     /**
      * 1 al 9
      */
     @Column
-    private long parch;
-    @Column
-    private long ticket;
+    private long parents_childrenAboard;
     @Column
     private double fare;
-    @Column
-    private String cabin;
     /**
-     * C, Q, S o Nulo
+     * 1 o 0
      */
     @Column
-    private String embarked;
-    @Column
-    private String boat;
-    @Column
-    private String body;
-    @Column
-    private String home_dest;
+    private long survived;
 
     /**
      * Seran necesarios estos constructores?
+     * Si es necesario, en la clase HelperCSV se traen los parametros del constructor
+     * modificado y el Postman me solicita el constructor por defecto
      * Permitira entradas con valores nulos?
      */
     public Pasajero() {
 
     }
 
-    public Pasajero(long id, long pclass, long survived, String name, String sex, double age,
-                    long sibsp, long parch, long ticket, double fare, String cabin, String embarked,
-                    String boat, String body, String home_dest) {
-        this.id = id;
-        this.pclass = pclass;
-        this.survived = survived;
+    public Pasajero(String name, long pclass, String sex, Double age,
+                    long siblings_spousesAboard, long parents_childrenAboard, double fare, long survived) {
         this.name = name;
+        this.pclass = pclass;
         this.sex = sex;
         this.age = age;
-        this.sibsp = sibsp;
-        this.parch = parch;
-        this.ticket = ticket;
+        this.siblings_spousesAboard = siblings_spousesAboard;
+        this.parents_childrenAboard = parents_childrenAboard;
         this.fare = fare;
-        this.cabin = cabin;
-        this.embarked = embarked;
-        this.boat = boat;
-        this.body = body;
-        this.home_dest = home_dest;
+        this.survived = survived;
     }
 
     public long getId() {
@@ -92,28 +71,20 @@ public class Pasajero implements Serializable {
         this.id = id;
     }
 
-    public long getPclass() {
-        return pclass;
-    }
-
-    public void setPclass(long pclass) {
-        this.pclass = pclass;
-    }
-
-    public long getSurvived() {
-        return survived;
-    }
-
-    public void setSurvived(long survived) {
-        this.survived = survived;
-    }
-
     public String getName() {
         return name;
     }
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public long getPclass() {
+        return pclass;
+    }
+
+    public void setPclass(long pclass) {
+        this.pclass = pclass;
     }
 
     public String getSex() {
@@ -124,36 +95,28 @@ public class Pasajero implements Serializable {
         this.sex = sex;
     }
 
-    public double getAge() {
+    public Double getAge() {
         return age;
     }
 
-    public void setAge(double age) {
+    public void setAge(Double age) {
         this.age = age;
     }
 
-    public long getSibsp() {
-        return sibsp;
+    public long getSiblings_spousesAboard() {
+        return siblings_spousesAboard;
     }
 
-    public void setSibsp(long sibsp) {
-        this.sibsp = sibsp;
+    public void setSiblings_spousesAboard(long siblings_spousesAboard) {
+        this.siblings_spousesAboard = siblings_spousesAboard;
     }
 
-    public long getParch() {
-        return parch;
+    public long getParents_childrenAboard() {
+        return parents_childrenAboard;
     }
 
-    public void setParch(long parch) {
-        this.parch = parch;
-    }
-
-    public long getTicket() {
-        return ticket;
-    }
-
-    public void setTicket(long ticket) {
-        this.ticket = ticket;
+    public void setParents_childrenAboard(long parents_childrenAboard) {
+        this.parents_childrenAboard = parents_childrenAboard;
     }
 
     public double getFare() {
@@ -164,67 +127,30 @@ public class Pasajero implements Serializable {
         this.fare = fare;
     }
 
-    public String getCabin() {
-        return cabin;
+    public long getSurvived() {
+        return survived;
     }
 
-    public void setCabin(String cabin) {
-        this.cabin = cabin;
-    }
-
-    public String getEmbarked() {
-        return embarked;
-    }
-
-    public void setEmbarked(String embarked) {
-        this.embarked = embarked;
-    }
-
-    public String getBoat() {
-        return boat;
-    }
-
-    public void setBoat(String boat) {
-        this.boat = boat;
-    }
-
-    public String getBody() {
-        return body;
-    }
-
-    public void setBody(String body) {
-        this.body = body;
-    }
-
-    public String getHome_dest() {
-        return home_dest;
-    }
-
-    public void setHome_dest(String home_dest) {
-        this.home_dest = home_dest;
+    public void setSurvived(long survived) {
+        this.survived = survived;
     }
 
     /**
      * Este toString sera necesario?
+     * Creo que es para cuando hago el llamado desde el navegador
      */
     @Override
     public String toString() {
         return "Pasajero{" +
                 "id=" + id +
-                ", pclass=" + pclass +
-                ", survived=" + survived +
                 ", name='" + name + '\'' +
+                ", pclass=" + pclass +
                 ", sex='" + sex + '\'' +
                 ", age=" + age +
-                ", sibsp=" + sibsp +
-                ", parch=" + parch +
-                ", ticket=" + ticket +
+                ", siblings_spousesAboard=" + siblings_spousesAboard +
+                ", parents_childrenAboard=" + parents_childrenAboard +
                 ", fare=" + fare +
-                ", cabin='" + cabin + '\'' +
-                ", embarked='" + embarked + '\'' +
-                ", boat='" + boat + '\'' +
-                ", body=" + body +
-                ", home_dest='" + home_dest + '\'' +
+                ", survived=" + survived +
                 '}';
     }
 }
